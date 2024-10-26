@@ -1,6 +1,8 @@
 import logo from "./assets/logo.png"
 import bannerImage from "./assets/banner-main.png"
 import footerLogo from "./assets/logo-footer.png"
+import AvailablePlayer from "./components/availablePlayer/AvailablePlayer"
+import SelectedPlayer from "./components/selectedPlayer/SelectedPlayer"
 
 const App = () => {
   return (
@@ -71,8 +73,7 @@ const App = () => {
       
       </header>
 
-      {/* available player */}
-      <section className="w-full min-h-screen py-[5vh] px-[6vw]">
+      <section className="w-full py-[5vh] px-[6vw] mb-[15%]">
         <div className="flex justify-between items-center py-[3vh]">
           <h2 className="text-2xl font-bold">Available Players</h2>
           <div>
@@ -80,9 +81,16 @@ const App = () => {
             <button className="bg-transparent py-4 px-5 rounded-lg text-slate-400 font-bold border border-slate-300">Selected (0)</button>
           </div>
         </div>
-        <div></div>
-      </section>
+      {/* available player */}
+        <div>
+          <AvailablePlayer></AvailablePlayer>
+        </div>
       {/* selected player */}
+        <div className="mt-6">
+          <SelectedPlayer></SelectedPlayer>
+        </div>
+
+      </section>
 
 
      

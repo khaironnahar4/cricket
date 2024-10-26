@@ -15,25 +15,25 @@ Welcome to **Assignment -07**. This assignment involves building a React-based a
 
 ### Navbar
 
-- The Navbar should match the Figma design and be .
-- Display the user's money in the Navbar, initially it will be 0. 
+- [] The Navbar should match the Figma design and be .
+- [] Display the user's money in the Navbar, initially it will be 0. 
 
 ### Banner
 
-- Design the banner with a heading, text, background, and button as per Figma.
+- [] Design the banner with a heading, text, background, and button as per Figma.
 - Everytime On clicking the button, the user's coin  will increase so that user can buy player.
 
 ### Main Section Design and Toggling Feature
 
-- Create two buttons at the top-right of the section. Available  & Selected
-- Selected button will show how many players are selected as in Figma , initially it will be 0.
+- [] Create two buttons at the top-right of the section. Available  & Selected
+- [] Selected button will show how many players are selected as in Figma , initially it will be 0.
 - Display Available Player section by default.
 - Display Selected Player Count in selected Player component as in figma.
 
 ### Player Data
 
-- Create a JSON file for  10-15 players, each having information like playerId, name, country, image, role, batting/bowling type, and bidding price.
-- You can create this JSON with AI systems such as Gemini , ChatGPT
+- [] Create a JSON file for  10-15 players, each having information like playerId, name, country, image, role, batting/bowling type, and bidding price.
+- [] You can create this JSON with AI systems such as Gemini , ChatGPT
 
 ### Display Players
 
@@ -55,11 +55,11 @@ Welcome to **Assignment -07**. This assignment involves building a React-based a
 
 ### Newsletter Section
 
-- Design the newsletter section according to Figma.
+- [] Design the newsletter section according to Figma.
 
 ### Footer
 
-- Design the footer section following the Figma design.
+- [] Design the footer section following the Figma design.
 
 ---
 
@@ -78,7 +78,7 @@ Welcome to **Assignment -07**. This assignment involves building a React-based a
       - on clicking choose, player,  if player selected previously then show user an alert(player already selected) and terminate.
       - if the selected player is already 6 then , show an alert and terminate
  - **Change Your Web-Application Title**:
-   change the web application title. If it show Vite-react some marks will be deducted.  
+   [] change the web application title. If it show Vite-react some marks will be deducted.  
   
 
 
