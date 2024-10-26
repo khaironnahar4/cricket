@@ -5,10 +5,16 @@ import AvailablePlayer from "./components/availablePlayer/AvailablePlayer"
 import SelectedPlayer from "./components/selectedPlayer/SelectedPlayer"
 import { useState } from "react"
 import { useEffect } from "react"
+import AavailablePlayers from "./components/availablePlayers/AavailablePlayers"
+import SelectedPlayers from "./components/selectedPlayers/SelectedPlayers"
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
+  const [isAvailable, setIsAvailable] = useState(true)
   const [availablePlayers, setAvailablePlayers] = useState([])
   const [availableCoins, setAvailableCoins] = useState(0)
+  const [selectedPlayers, setSelectedPlayers] = useState([])
 
   useEffect(()=>{
     fetch("data.json")
@@ -16,10 +22,37 @@ const App = () => {
     .then(data => setAvailablePlayers(data))
   },[])
 
-  const handleAvailableCoins = (coins)=>{
-    setAvailableCoins(availableCoins+coins)
+  const handleAvailableCoins = ()=>{
+    const newCoins = availableCoins+1500000;
+    setAvailableCoins(newCoins)
   }
-  // console.log(availableCoins);
+
+  const handleRemainingCoins = (reducedCoins) =>{  
+    const remaing = availableCoins-reducedCoins
+    setAvailableCoins(remaing)
+  } 
+
+  const handleSelectedPlayers = (player)=>{
+    const isPlayerSelected = selectedPlayers.find(prevPlayer => player.playerId === prevPlayer.playerId)
+    
+    if(isPlayerSelected){
+      toast.warn('Player Already exist' )
+    }
+    else{
+      if(availableCoins<player.biddingPrice) toast.warn("don't have enough coins")
+      else{
+        handleRemainingCoins(player.biddingPrice)
+        selectedPlayers.length<=5 ? setSelectedPlayers([...selectedPlayers, player]) : toast.warn("6 player already selected")
+      }
+    }
+    
+  }
+
+  const handleDeletePlayer = (player =>{
+    // console.log(selectedPlayers);  
+    const remainingPlayers = selectedPlayers.filter(selectedPlayer => selectedPlayer.playerId !== player.playerId)
+    setSelectedPlayers([...remainingPlayers])    
+  })
   
   
   return (
@@ -85,7 +118,7 @@ const App = () => {
         <img src={bannerImage} alt="banner image" />
         <h1 className="text-4xl py-6 text-white font-bold text-center">Assemble Your Ultimate Dream 11 Cricket Team</h1>
         <h3 className="text-slate-100">Beyond Boundaries Beyond Limits</h3>
-        <button onClick={()=> handleAvailableCoins(1500000)} className="mt-6 bg-[#E7FE29] py-3 px-5 text-center rounded-xl font-bold hover:bg-slate-100">Claim Free Credits</button>
+        <button onClick={handleAvailableCoins} className="mt-6 bg-[#E7FE29] py-3 px-5 text-center rounded-xl font-bold hover:bg-slate-100">Claim Free Credits</button>
         </div>
       
       </header>
@@ -93,22 +126,26 @@ const App = () => {
     {/* player section */}
       <section className="w-full py-[5vh] px-[6vw] mb-[15%]">
         <div className="flex justify-between items-center py-[3vh]">
-          <h2 className="text-2xl font-bold">Available Players</h2>
+          <h2 className="text-2xl font-bold">
+            {
+              isAvailable ? 'Available Players' : `Selected Players (${selectedPlayers.length}/6)`
+            }
+          </h2>
           <div>
-            <button className="me-6 bg-[#E7FE29] py-4 px-5 rounded-lg font-bold border border-slate-300">Available</button>
-            <button className="bg-transparent py-4 px-5 rounded-lg text-slate-400 font-bold border border-slate-300">Selected (0)</button>
+            <button onClick={()=>setIsAvailable(true)} className={`me-6 py-4 px-5 rounded-lg font-bold border border-slate-300 
+              ${isAvailable ? 'bg-[#E7FE29] text-black' : 'bg-transparent text-slate-400'}`}>Available</button>
+            <button onClick={()=>setIsAvailable(false)} className={`py-4 px-5 rounded-lg font-bold border border-slate-300
+              ${isAvailable ?  'bg-transparent text-slate-400' : 'bg-[#E7FE29] text-black'}`}>Selected ({selectedPlayers.length})</button>
           </div>
         </div>
       {/* available player */}
-        <div className="grid lg:grid-cols-3 grid-cols-1 gap-6">
-          {
-            availablePlayers.map((availablePlayer => <AvailablePlayer key={availablePlayer.playerId} availablePlayer={availablePlayer}></AvailablePlayer>))
-          }
-        </div>
+      {
+        (isAvailable) ? <AavailablePlayers handleSelectedPlayers={handleSelectedPlayers} availablePlayers={availablePlayers}></AavailablePlayers> : <SelectedPlayers setIsAvailable={setIsAvailable} handleDeletePlayer={handleDeletePlayer} selectedPlayers={selectedPlayers}></SelectedPlayers>
+
+      }
       {/* selected player */}
-        <div className="mt-6">
-          <SelectedPlayer></SelectedPlayer>
-        </div>
+
+  
 
       </section>
 
@@ -180,6 +217,7 @@ const App = () => {
           <p className="text-slate-100 py-6">@2024 all right reserve to Khairun Nahar</p>
         </div>
       </footer>
+      <ToastContainer position="top-center"/>
     </div>
   )
 }

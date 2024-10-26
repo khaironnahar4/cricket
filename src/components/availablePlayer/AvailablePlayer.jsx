@@ -1,4 +1,4 @@
-const AvailablePlayer = ({availablePlayer}) => {
+const AvailablePlayer = ({availablePlayer, handleSelectedPlayers}) => {
     // console.log(availablePlayer);
     
     const {name,country,image,role,battingType,bowlingType,biddingPrice} = availablePlayer
@@ -27,7 +27,7 @@ const AvailablePlayer = ({availablePlayer}) => {
         </div>
         <div className="flex justify-between items-center">
             <h3 className="font-bold">Price: ${biddingPrice}</h3>
-            <button className="bg-transparent border border-slate-300 py-3 px-4 rounded-lg hover:bg-[#E7FE29]">Choose Player</button>
+            <button onClick={()=>{handleSelectedPlayers(availablePlayer)}} className="bg-transparent border border-slate-300 py-3 px-4 rounded-lg hover:bg-[#E7FE29]">Choose Player</button>
         </div>
         
       </div>
