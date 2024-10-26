@@ -37,8 +37,8 @@ Welcome to **Assignment -07**. This assignment involves building a React-based a
 
 ### Display Players
 
-- Show all players in a card layout (3 columns recommended ) with the player's details
-- Show Players name, country, image, role, batting/bowling type, and bidding price.
+- [] Show all players in a card layout (3 columns recommended ) with the player's details
+- [] Show Players name, country, image, role, batting/bowling type, and bidding price.
 - Their will be a  "Choose Player" button on each card. on Clicking it following will happen.
 
 ### Choose Player Functionality

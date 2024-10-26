@@ -3,8 +3,25 @@ import bannerImage from "./assets/banner-main.png"
 import footerLogo from "./assets/logo-footer.png"
 import AvailablePlayer from "./components/availablePlayer/AvailablePlayer"
 import SelectedPlayer from "./components/selectedPlayer/SelectedPlayer"
+import { useState } from "react"
+import { useEffect } from "react"
 
 const App = () => {
+  const [availablePlayers, setAvailablePlayers] = useState([])
+  const [availableCoins, setAvailableCoins] = useState(0)
+
+  useEffect(()=>{
+    fetch("data.json")
+    .then(res=> res.json())
+    .then(data => setAvailablePlayers(data))
+  },[])
+
+  const handleAvailableCoins = (coins)=>{
+    setAvailableCoins(availableCoins+coins)
+  }
+  // console.log(availableCoins);
+  
+  
   return (
     <div>
       <header className="w-full h-screen px-[6vw]">
@@ -40,7 +57,7 @@ const App = () => {
                   <li><a>Team</a></li>
                   <li><a>Schedules</a></li>
                   
-                  <a className="btn">0 Coins </a>
+                  <a className="btn">{availableCoins} Coins </a>
                 </ul>
             </div>
           <div className="navbar-end hidden lg:flex">
@@ -50,7 +67,7 @@ const App = () => {
               <li><a>Team</a></li>
               <li><a>Schedules</a></li>
             </ul>
-            <a className="btn bg-transparent border border-slate-300 rounded-lg hover:bg-[#E7FE29]">0 Coins </a>
+            <a className="btn bg-transparent border border-slate-300 rounded-lg hover:bg-[#E7FE29]">{availableCoins} Coins </a>
           </div>
         </div>
         </nav>
@@ -68,11 +85,12 @@ const App = () => {
         <img src={bannerImage} alt="banner image" />
         <h1 className="text-4xl py-6 text-white font-bold text-center">Assemble Your Ultimate Dream 11 Cricket Team</h1>
         <h3 className="text-slate-100">Beyond Boundaries Beyond Limits</h3>
-        <button className="mt-6 bg-[#E7FE29] py-3 px-5 text-center rounded-xl font-bold hover:bg-slate-100">Claim Free Credits</button>
+        <button onClick={()=> handleAvailableCoins(1500000)} className="mt-6 bg-[#E7FE29] py-3 px-5 text-center rounded-xl font-bold hover:bg-slate-100">Claim Free Credits</button>
         </div>
       
       </header>
 
+    {/* player section */}
       <section className="w-full py-[5vh] px-[6vw] mb-[15%]">
         <div className="flex justify-between items-center py-[3vh]">
           <h2 className="text-2xl font-bold">Available Players</h2>
@@ -82,8 +100,10 @@ const App = () => {
           </div>
         </div>
       {/* available player */}
-        <div>
-          <AvailablePlayer></AvailablePlayer>
+        <div className="grid lg:grid-cols-3 grid-cols-1 gap-6">
+          {
+            availablePlayers.map((availablePlayer => <AvailablePlayer key={availablePlayer.playerId} availablePlayer={availablePlayer}></AvailablePlayer>))
+          }
         </div>
       {/* selected player */}
         <div className="mt-6">
@@ -91,9 +111,6 @@ const App = () => {
         </div>
 
       </section>
-
-
-     
 
       {/* footer */}
       <footer className="w-full bg-black text-white relative">
