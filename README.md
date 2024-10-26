@@ -1,106 +1,43 @@
+# Cricket Team Builder
 
-## Private For your Assignment
+## Project Overview
+**Cricket Team Builder** is a React-based application that allows users to build their custom cricket team by selecting players from an API-sourced list. The app incorporates coin management, player selection limitations, and dual viewing modes to enhance the experience of creating a balanced cricket team. Each interaction is designed to ensure intuitive team management, allowing users to track both available coins and player limits.
 
-you have to create private repo in our Google Classroom . here is the Link
+## Technologies Used
+- **React.js**: Framework for building the UI and managing application state.
+- **React-Toastify**: For user-friendly and visually engaging notifications.
+- **Tailwind CSS**: To style the components following Figma’s design.
+- **REST API**: To fetch player data dynamically.
 
-# [https://classroom.github.com/a/8giEjBQc](https://classroom.github.com/a/8giEjBQc)
+## Key Features
+1. **API Integration and Player Cards**  
+   The app fetches cricket players' details from an external API, displaying them in cards that showcase information like player name, country, role, and price. Each player card has a button to select the player, function to the coin balance.
 
+2. **Coin Management and Player Selection**  
+   Users can earn coins by clicking a designated button, which increases their balance, displayed in the Navbar. When selecting players, the app checks if the user has enough coins, reducing the coin balance accordingly for each addition. Users can select up to 6 players, with validation to prevent duplicate selections or exceed the limit.
 
+3. **Toggle Between Available and Selected Players**  
+   The application offers two main buttons: one to display all available players and another to view only the selected players. This toggle functionality lets users switch seamlessly between views, offering a smooth selection and management experience.
 
-# <img width="30px" src="assets/logo.png"/> BPL-DREAM 11
-
-Welcome to **Assignment -07**. This assignment involves building a React-based application where users can select and manage cricket players for a team, following the design from Figma. You'll create a  UI, handle player selection, coin limitations, and complete the system following the requirements written below:
-
----
+## Detailed Functionality
 
 ### Navbar
+- Displays the user’s coin balance, initially set to 0.
+- Users can add coins to their balance by clicking a button, enabling them to accumulate enough to select players.
 
-- [] The Navbar should match the Figma design and be .
-- [] Display the user's money in the Navbar, initially it will be 0. 
+### Player Selection and Validation
+- **Add Player**: Each player card has an “Choose Player” button. When clicked, the app:
+  - Checks if the user has sufficient coins for the player’s price.
+  - Adds the player to the selected list if all conditions are met.
+  - Reduces the user’s coin balance based on the player’s price.
+  - Alerts the user if they attempt to select more than 6 players or the same player twice.
 
-### Banner
+### Dual View: Available & Selected Players
+- Users can toggle between “Available Players” and “Selected Players” view.
+- “Available Players” shows all fetched players, while “Selected Players” shows only those added to the team.
 
-- [] Design the banner with a heading, text, background, and button as per Figma.
-- [] Everytime On clicking the button, the user's coin  will increase so that user can buy player.
+### Remove Selected Player
+- The “Selected Players” view displays each chosen player in a single-column layout, including a delete button.
+- Clicking the delete button removes the player from the selected list and restores the spent coins to the user’s balance.
 
-### Main Section Design and Toggling Feature
-
-- [] Create two buttons at the top-right of the section. Available  & Selected
-- [] Selected button will show how many players are selected as in Figma , initially it will be 0.
-- [ ] Display Available Player section by default.
-- [ ] Display Selected Player Count in selected Player component as in figma.
-
-### Player Data
-
-- [] Create a JSON file for  10-15 players, each having information like playerId, name, country, image, role, batting/bowling type, and bidding price.
-- [] You can create this JSON with AI systems such as Gemini , ChatGPT
-
-### Display Players
-
-- [] Show all players in a card layout (3 columns recommended ) with the player's details
-- [] Show Players name, country, image, role, batting/bowling type, and bidding price.
-- [ ] Their will be a  "Choose Player" button on each card. on Clicking it following will happen.
-
-### Choose Player Functionality
-
-- [ ] on Click "Choose Player" button ,  check if user have available coin or not.
-- [ ] show an alert if user dont have available coin.  
-- [ ] Otherwise, add the player to the selected players list.
-
-### Selected Players
-
--  [ ]Display selected players' details in a card with one-column layout
-- []  Each card will have player image , name ,  player role, price. 
-- [] a remove button for each player.
-
-### Newsletter Section
-
-- [] Design the newsletter section according to Figma.
-
-### Footer
-
-- [] Design the footer section following the Figma design.
-
----
-
-### Challenges
-
-- **Use React-Toastify**:
-  Replace all alerts in the interface with `React-Toastify` for better user notifications.
-
-- **Implement Selected Player Remove Functionality**:
-  [ ] Add a "Remove" button to each selected player card. On click, the player should be removed from the selected players' section.
-
-- **Add More Player Button Functionality **:
- [ ] Implement an "Add More Players" button. On click, it should display the available player section again for the user to choose from.
-
-- **Implement The Perfect Validation on Player selection**:
-      - [ ] on clicking choose, player,  if player selected previously then show user an alert(player already selected) and terminate.
-      -[ ] if the selected player is already 6 then , show an alert and terminate
- - **Change Your Web-Application Title**:
-   [] change the web application title. If it show Vite-react some marks will be deducted.  
-  
-
-
-- **Beautify GitHub Repository **:
-  Create an attractive `README.md` for your GitHub repository with the following:
-  - Name of your project.
-  - A brief description.
-  - Technologies used.
-  - 3 key features of your project.
-
----
-
-### Optional Feature
-
-- Implement a login experience in the newsletter section using LocalStorage.
-- On subscribing, store the user's email and display a personalized message on reload if the email exists in LocalStorage.
-
-# Designs
-
-Page with Available Players
-<img src="application-design/main.jpg"/>
-
-<hr/>
-Page with Selected Players
-<img src="application-design/main-2.jpg"/>
+**Cricket Team Builder** is crafted to provide a fun and dynamic experience for creating a custom cricket team with full control over player selection, coin management, and an intuitive interface for building the ideal lineup.
