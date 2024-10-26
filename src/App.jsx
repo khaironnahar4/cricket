@@ -64,7 +64,7 @@ const App = () => {
         items-center
         m-0 p-0 bg-black">
         <img src={bannerImage} alt="banner image" />
-        <h1 className="text-4xl py-6 text-white font-bold">Assemble Your Ultimate Dream 11 Cricket Team</h1>
+        <h1 className="text-4xl py-6 text-white font-bold text-center">Assemble Your Ultimate Dream 11 Cricket Team</h1>
         <h3 className="text-slate-100">Beyond Boundaries Beyond Limits</h3>
         <button className="mt-6 bg-[#E7FE29] py-3 px-5 text-center rounded-xl font-bold hover:bg-slate-100">Claim Free Credits</button>
         </div>
@@ -84,10 +84,46 @@ const App = () => {
       </section>
       {/* selected player */}
 
-      {/* subscribe */}
+
+     
 
       {/* footer */}
-      <footer className="w-full bg-black text-white">
+      <footer className="w-full bg-black text-white relative">
+      {/* subscribe */}
+      <div className="mx-[5vw]">
+      <div className="-top-[20%] w-[90%]
+      text-black
+      p-8 
+      border 
+      border-slate-300 
+      rounded-xl 
+      bg-slate-100 
+      bg-opacity-30 
+      absolute 
+      z-50
+      -top-6">
+        <div className="
+        bg-white
+        bg-[url('./assets/bg-shadow.png')] 
+        bg-cover 
+        bg-no-repeat 
+        bg-center 
+        w-full 
+        flex 
+        flex-col 
+        justify-center 
+        items-center
+        p-11
+        rounded-xl">
+          <h2 className="text-2xl font-bold">Subscribe to our Newsletter</h2>
+          <p className="my-6">Get the latest update and news right in your inbox!</p>
+          <div className="text-slate-300">
+              <input type="text" placeholder="Enter your email" className="py-3 px-5 rounded-lg border border-slate-300 me-6"/>
+              <button className="py-3 px-3 rounded-lg bg-gradient-to-r from-[#df5de3] from-30% to-[#b3b400] to-90% text-black font-bold">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      </div>
         <div className="px-[5vw] pb-14 pt-[35vh]">
         <img src={footerLogo} alt="logo" className="mx-auto"/>
         <div className="grid lg:grid-cols-3 grid-cols-1 justify-between items-start gap-[10vw] py-[5vh]">
