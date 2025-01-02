@@ -1,5 +1,7 @@
 # Cricket Team Builder
 
+# Live site: https://bucolic-praline-76f6db.netlify.app/
+
 ## Project Overview
 **Cricket Team Builder** is a React-based application that allows users to build their custom cricket team by selecting players from an API-sourced list. The app incorporates coin management, player selection limitations, and dual viewing modes to enhance the experience of creating a balanced cricket team. Each interaction is designed to ensure intuitive team management, allowing users to track both available coins and player limits.
 
